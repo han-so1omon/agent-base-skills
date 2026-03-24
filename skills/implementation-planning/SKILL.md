@@ -12,10 +12,21 @@ Use before making non-trivial code changes.
 
 ## Do
 - identify the real requirement
-- name the smallest correct change
 - identify affected files
-- identify required tests
-- identify real dependencies involved
+- determine smallest viable change
+- identify tests needed
+- identify dependencies involved
+
+## Migration scope
+If replacing existing functionality:
+
+identify:
+- which entry points must change
+- which legacy components must be removed
+- whether compatibility is actually required
+- whether both paths would remain active
+
+prefer a complete switch over dual behavior.
 
 ## Prefer
 - direct solutions
@@ -25,13 +36,12 @@ Use before making non-trivial code changes.
 ## Avoid
 - speculative refactors
 - broad rewrites
-- new patterns without need
-- changing unrelated files
+- adding parallel implementations without need
 
 ## Output
 Return:
 - goal
 - files to change
 - smallest viable approach
-- tests to run
+- migration scope (if applicable)
 - risks

@@ -11,25 +11,37 @@ metadata:
 Use during implementation and before finalizing a patch.
 
 ## Do
-- prefer the smallest correct change
+- prefer smallest correct change
 - reuse existing code where reasonable
 - delete dead code introduced by the change
 - keep functions and files compact
 
+## Migration awareness
+
+When replacing an implementation:
+
+prefer modifying existing path over introducing parallel structures.
+
+avoid keeping legacy helpers that are no longer used.
+
+small diff does not mean preserving obsolete code.
+
+avoid introducing new abstraction layers solely to preserve legacy behavior.
+
 ## Avoid
-- adding abstraction for one use
-- large refactors without explicit need
-- extra configuration layers
-- helper functions with only one trivial caller
+- abstraction for single use
+- unnecessary configuration layers
+- duplicate logic paths
+- compatibility layers without requirement
 
 ## Check
-- is every changed line necessary
+- is each changed line necessary
 - can any branch be removed
-- can logic be made more direct
-- did scope expand beyond the request
+- did scope expand beyond request
+- did legacy code remain unnecessarily
 
 ## Output
 Return:
 - unnecessary complexity found
+- unused legacy code detected
 - files with oversized changes
-- lines or sections that can be removed

@@ -1,6 +1,6 @@
 ---
 name: anti-workarounds
-description: Detect test-passing shortcuts, hardcoding, stubs, and other fake-work patterns
+description: Detect shortcuts, stubs, hardcoding, compatibility fallbacks, and other fake-work patterns
 compatibility: opencode
 metadata:
   domain: coding
@@ -13,22 +13,33 @@ Use before claiming completion on any non-trivial task.
 ## Look for
 - fixture-specific branching
 - hardcoded outputs
-- constant return values for expected cases
-- stubs left in production paths
+- constant return values
+- stubbed logic in production paths
 - fake adapters used to satisfy tests
-- hidden fallback logic bypassing the real path
-- TODO or placeholder logic presented as done
+- TODO logic presented as done
+
+## Migration-related shortcuts
+
+flag as suspicious:
+
+- fallback to legacy implementation when new implementation exists
+- adapter layers routing back to old logic
+- configuration flags selecting old behavior silently
+- duplicated logic kept "for compatibility" without requirement
+- legacy functions no longer used in main execution path
+
+verify compatibility is actually required.
 
 ## Check
-- does behavior vary correctly with input
-- does the implementation generalize beyond the provided examples
-- is the real mechanism implemented
-- are mocks confined to test-only contexts
+- behavior varies correctly with input
+- implementation generalizes beyond examples
+- real mechanism implemented
+- mocks confined to tests only
 
 ## Block completion if
-- tests pass only because of a shortcut
-- the real dependency path was not implemented
-- the code works only for the visible cases
+- tests pass via shortcut
+- legacy path remains unintentionally active
+- compatibility logic obscures actual behavior
 
 ## Output
 Return:

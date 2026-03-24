@@ -8,7 +8,16 @@ metadata:
 ---
 
 ## Use when
-Use after implementing any change that touches external systems, persistence, APIs, files, queues, auth, or process boundaries.
+Use after implementing changes involving:
+
+persistence
+APIs
+filesystems
+queues
+authentication
+process boundaries
+adapters
+data models
 
 ## Prefer
 - real database
@@ -18,20 +27,29 @@ Use after implementing any change that touches external systems, persistence, AP
 - real process startup
 - real containerized dependencies where available
 
+## Migration verification
+
+ensure new implementation is actually exercised.
+
+verify:
+- main execution path reaches new code
+- tests do not still rely on legacy wiring
+- new behavior is observable externally
+- old path is not silently used instead
+
 ## Avoid
-- mock-only proof of correctness
-- claiming completion from unit tests alone
-- replacing integration gaps with stubs
+- mock-only validation
+- assuming tests cover new path
+- partial wiring
 
 ## Check
-- does the feature work through the public interface
-- does it work in a clean environment
-- does it exercise the intended dependency path
-- does it persist or communicate correctly
+- does feature work through public interface
+- does it work in clean environment
+- does integration use intended path
+- is persistence correct
 
 ## Output
 Return:
 - integration path tested
-- real dependencies exercised
-- evidence from execution
-- remaining untested boundaries
+- evidence of execution
+- legacy paths still active (if any)

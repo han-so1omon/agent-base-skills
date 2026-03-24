@@ -1,6 +1,6 @@
 ---
 name: robustness-checks
-description: Test whether the implementation still works under small, realistic changes in inputs or environment
+description: Verify behavior remains correct under small realistic changes in inputs or environment
 compatibility: opencode
 metadata:
   domain: coding
@@ -8,7 +8,7 @@ metadata:
 ---
 
 ## Use when
-Use after basic correctness is established.
+Use after correctness is established.
 
 ## Try
 - reordered inputs
@@ -17,22 +17,25 @@ Use after basic correctness is established.
 - repeated execution
 - slightly different valid inputs
 - missing optional values
-- larger sample size
-- different config values within normal bounds
+- larger input set
+- config changes within valid bounds
+
+## Migration robustness
+
+ensure system behaves consistently after replacement.
+
+verify:
+- old path does not reappear under variation
+- new path remains stable under repeated execution
+- behavior does not depend on transitional wiring
 
 ## Check
-- does behavior remain correct
-- does repeated execution remain safe
-- does the code fail gracefully on edge cases
-- does the implementation depend on hidden assumptions
-
-## Avoid
-- declaring success because the happy path passed once
-- treating “did not crash” as sufficient
+- behavior remains correct
+- execution remains idempotent
+- failures are graceful
+- no hidden assumptions about prior structure
 
 ## Output
 Return:
 - perturbations applied
-- expected behavior
-- observed behavior
 - brittle assumptions found

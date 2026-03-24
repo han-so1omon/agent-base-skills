@@ -1,6 +1,6 @@
 ---
 name: completion-gate
-description: Final completion review for correctness, scope control, real testing, and maintainability
+description: Final review for correctness, scope control, real execution, and maintainability
 compatibility: opencode
 metadata:
   domain: coding
@@ -13,26 +13,36 @@ Use immediately before declaring a task complete.
 ## Require
 - requested behavior implemented
 - smallest reasonable diff
-- real tests run as appropriate
+- real tests executed where appropriate
 - no blocking workaround patterns
 - no unnecessary abstraction added
 - no unrelated files changed without reason
 
+## Migration completeness
+
+if replacing prior behavior, verify:
+
+- main execution path uses new implementation
+- legacy code removed or clearly marked deprecated
+- no silent fallback to old behavior
+- no duplicate active logic paths without intent
+- imports and dependency wiring updated
+- tests exercise new path
+
 ## Ask
-- does it solve the actual request
-- does it work through the intended path
-- is the patch maintainable
+- does implementation solve actual request
+- does system use new behavior
+- does code generalize beyond provided inputs
 - is anything still partial or stubbed
-- what remains unverified
 
 ## Do not
-- do not say complete if critical behavior is only mocked
-- do not hide limitations
-- do not describe partial work as finished
+- declare complete if real path not implemented
+- present transitional state as finished
+- leave dual logic paths unintentionally active
 
 ## Output
 Return:
 - complete or incomplete
-- evidence supporting that judgment
+- blocking issues
+- remaining migration work (if any)
 - known limitations
-- next required step if incomplete
