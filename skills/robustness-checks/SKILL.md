@@ -21,10 +21,9 @@ Use after correctness is established.
 - config changes within valid bounds
 
 ## Migration robustness
+Ensure system behaves consistently after replacement.
 
-ensure system behaves consistently after replacement.
-
-verify:
+Verify:
 - old path does not reappear under variation
 - new path remains stable under repeated execution
 - behavior does not depend on transitional wiring

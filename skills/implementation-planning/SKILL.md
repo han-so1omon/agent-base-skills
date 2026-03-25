@@ -28,6 +28,19 @@ identify:
 
 prefer a complete switch over dual behavior.
 
+## Execution commitment
+When stating a plan, distinguish clearly between:
+- intended next actions
+- optional alternatives
+- work not yet performed
+
+Do not describe planned work as completed work.
+
+If execution later changes, explicitly state:
+- what changed
+- why it changed
+- what was actually done instead
+
 ## Prefer
 - direct solutions
 - existing code paths
@@ -45,3 +58,4 @@ Return:
 - smallest viable approach
 - migration scope (if applicable)
 - risks
+- anything not yet executed

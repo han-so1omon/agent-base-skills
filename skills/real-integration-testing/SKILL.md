@@ -28,14 +28,23 @@ data models
 - real containerized dependencies where available
 
 ## Migration verification
+Ensure new implementation is actually exercised.
 
-ensure new implementation is actually exercised.
-
-verify:
+Verify:
 - main execution path reaches new code
 - tests do not still rely on legacy wiring
 - new behavior is observable externally
 - old path is not silently used instead
+
+## Evidence over assertion
+Do not claim real integration behavior without execution evidence.
+
+State explicitly:
+- what was run
+- what environment was used
+- what remains unverified
+
+Do not infer successful integration solely from code inspection.
 
 ## Avoid
 - mock-only validation
@@ -53,3 +62,4 @@ Return:
 - integration path tested
 - evidence of execution
 - legacy paths still active (if any)
+- unverified boundaries

@@ -17,7 +17,6 @@ Use during implementation and before finalizing a patch.
 - keep functions and files compact
 
 ## Migration awareness
-
 When replacing an implementation:
 
 prefer modifying existing path over introducing parallel structures.
