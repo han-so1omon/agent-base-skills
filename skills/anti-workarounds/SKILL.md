@@ -1,62 +1,34 @@
 ---
 name: anti-workarounds
-description: Detect shortcuts, stubs, hardcoding, compatibility fallbacks, and other fake-work patterns
+description: Detect fake work, hidden fallbacks, and misleading claims
 compatibility: opencode
-metadata:
-  domain: coding
-  stage: review
 ---
 
-## Use when
-Use before claiming completion on any non-trivial task.
-
-## Look for
-- fixture-specific branching
+## Flag as suspicious
 - hardcoded outputs
-- constant return values
-- stubbed logic in production paths
-- fake adapters used to satisfy tests
-- TODO logic presented as done
+- stub logic in production paths
+- silent fallback to legacy implementation
+- duplicate logic paths
+- compatibility layers without need
 
-## Migration-related shortcuts
-Flag as suspicious:
-- fallback to legacy implementation when new implementation exists
-- adapter layers routing back to old logic
-- configuration flags selecting old behavior silently
-- duplicated logic kept "for compatibility" without requirement
-- legacy functions no longer used in main execution path
+## Commitment integrity
+Flag mismatch between:
+- stated plan
+- executed work
+- created artifacts
 
-Verify compatibility is actually required.
+If promised artifact was not created, state that clearly.
 
-## Truthfulness checks
-Flag as blocking if the implementation narrative does not match the actual work.
+## Overclaiming
+Flag language exceeding evidence:
+- "final solution"
+- "magic bullet"
+- "definitive fix"
 
-Examples:
-- claiming a file was updated when it was not
-- claiming a new path is used when old wiring remains
-- claiming integration was tested when only unit tests ran
-- stating intent, then silently doing different work
-
-Require clear separation between:
-- planned actions
-- completed actions
-- inferred outcomes
-
-## Check
-- behavior varies correctly with input
-- implementation generalizes beyond examples
-- real mechanism implemented
-- mocks confined to tests only
-
-## Block completion if
-- tests pass via shortcut
-- legacy path remains unintentionally active
-- compatibility logic obscures actual behavior
-- reported work does not match actual work
+Prefer evidence-backed statements.
 
 ## Output
 Return:
-- suspicious files
-- suspicious logic patterns
+- suspicious patterns
+- plan/execution mismatch
 - unsupported claims
-- whether each issue blocks completion

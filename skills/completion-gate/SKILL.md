@@ -1,62 +1,46 @@
 ---
 name: completion-gate
-description: Final review for correctness, scope control, real execution, and maintainability
+description: Final validation before declaring completion
 compatibility: opencode
-metadata:
-  domain: coding
-  stage: final
 ---
-
-## Use when
-Use immediately before declaring a task complete.
 
 ## Require
 - requested behavior implemented
-- smallest reasonable diff
-- real tests executed where appropriate
+- minimal necessary diff
+- real tests where appropriate
 - no blocking workaround patterns
-- no unnecessary abstraction added
-- no unrelated files changed without reason
+
+## Commitment integrity
+Verify:
+- approved steps were executed
+- promised artifacts were created
+- deviations from plan are disclosed
+
+Do not claim work that was not performed.
 
 ## Migration completeness
-If replacing prior behavior, verify:
-- main execution path uses new implementation
-- legacy code removed or clearly marked deprecated
-- no silent fallback to old behavior
-- no duplicate active logic paths without intent
-- imports and dependency wiring updated
-- tests exercise new path
+Verify:
+- execution path uses new implementation
+- legacy paths removed or deprecated
+- no silent fallback remains
 
-## Truthfulness and execution match
-Before declaring completion, verify that:
-- stated plan matches actual changes
-- claimed tests were actually run
-- claimed integration paths were actually exercised
-- claimed migrations actually changed live execution path
-- any deviation from earlier plan is explicitly disclosed
+## Truthfulness & humility
+Ensure claims match evidence.
 
-Do not report:
-- intended work as completed
-- assumed behavior as verified behavior
-- partial progress as finished implementation
+Avoid:
+- presenting partial results as final
+- overstating certainty
+- claiming universal solutions without support
 
-## Ask
-- does implementation solve actual request
-- does system use new behavior
-- does code generalize beyond provided inputs
-- is anything still partial or stubbed
-- what remains unverified
-
-## Do not
-- declare complete if real path not implemented
-- present transitional state as finished
-- leave dual logic paths unintentionally active
+State:
+- confidence level
+- unverified areas
+- tradeoffs
 
 ## Output
 Return:
 - complete or incomplete
-- blocking issues
 - deviations from plan
-- remaining migration work (if any)
-- known limitations
+- remaining work
 - unverified areas
+- confidence level

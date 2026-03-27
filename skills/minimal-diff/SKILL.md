@@ -1,46 +1,27 @@
 ---
 name: minimal-diff
-description: Keep changes small, direct, and proportional to the requested capability
+description: Keep changes proportional and direct
 compatibility: opencode
-metadata:
-  domain: coding
-  stage: implementation
 ---
-
-## Use when
-Use during implementation and before finalizing a patch.
 
 ## Do
 - prefer smallest correct change
-- reuse existing code where reasonable
-- delete dead code introduced by the change
-- keep functions and files compact
+- reuse existing structures
+- remove dead code introduced by change
 
 ## Migration awareness
-When replacing an implementation:
+When replacing behavior:
+- prefer modifying existing path
+- remove unused legacy code
+- avoid duplicate logic paths
 
-prefer modifying existing path over introducing parallel structures.
-
-avoid keeping legacy helpers that are no longer used.
-
-small diff does not mean preserving obsolete code.
-
-avoid introducing new abstraction layers solely to preserve legacy behavior.
-
-## Avoid
-- abstraction for single use
-- unnecessary configuration layers
-- duplicate logic paths
-- compatibility layers without requirement
+Small diff does not mean preserving obsolete code.
 
 ## Check
-- is each changed line necessary
-- can any branch be removed
-- did scope expand beyond request
-- did legacy code remain unnecessarily
+- each change is necessary
+- scope did not expand unnecessarily
 
 ## Output
 Return:
-- unnecessary complexity found
-- unused legacy code detected
-- files with oversized changes
+- unnecessary complexity
+- legacy code remaining

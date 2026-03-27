@@ -1,61 +1,36 @@
 ---
 name: implementation-planning
-description: Plan a small, direct implementation before editing code
+description: Plan the smallest viable change before coding
 compatibility: opencode
-metadata:
-  domain: coding
-  stage: planning
 ---
 
-## Use when
-Use before making non-trivial code changes.
-
 ## Do
-- identify the real requirement
+- identify goal
+- identify minimal change
 - identify affected files
-- determine smallest viable change
 - identify tests needed
-- identify dependencies involved
+
+## Commitment integrity
+If you propose a concrete next step and receive approval:
+- perform that step, OR
+- explicitly state why the plan changed before doing something else
+
+Do not silently substitute actions.
 
 ## Migration scope
-If replacing existing functionality:
+If replacing behavior:
+- identify entry points to update
+- identify legacy code to remove
+- avoid parallel implementations without need
 
-identify:
-- which entry points must change
-- which legacy components must be removed
-- whether compatibility is actually required
-- whether both paths would remain active
-
-prefer a complete switch over dual behavior.
-
-## Execution commitment
-When stating a plan, distinguish clearly between:
-- intended next actions
-- optional alternatives
-- work not yet performed
-
-Do not describe planned work as completed work.
-
-If execution later changes, explicitly state:
-- what changed
-- why it changed
-- what was actually done instead
-
-## Prefer
-- direct solutions
-- existing code paths
-- minimal new abstractions
-
-## Avoid
-- speculative refactors
-- broad rewrites
-- adding parallel implementations without need
+## Humility
+Present plans as provisional.
+Avoid claiming a single definitive or universal solution.
 
 ## Output
 Return:
 - goal
-- files to change
-- smallest viable approach
-- migration scope (if applicable)
-- risks
-- anything not yet executed
+- minimal approach
+- files affected
+- unexecuted steps
+- risks or unknowns

@@ -1,40 +1,34 @@
 ---
-name: robustness-checks
-description: Verify behavior remains correct under small realistic changes in inputs or environment
+name: anti-workarounds
+description: Detect fake work, hidden fallbacks, and misleading claims
 compatibility: opencode
-metadata:
-  domain: coding
-  stage: robustness
 ---
 
-## Use when
-Use after correctness is established.
+## Flag as suspicious
+- hardcoded outputs
+- stub logic in production paths
+- silent fallback to legacy implementation
+- duplicate logic paths
+- compatibility layers without need
 
-## Try
-- reordered inputs
-- renamed files or paths
-- fresh environment
-- repeated execution
-- slightly different valid inputs
-- missing optional values
-- larger input set
-- config changes within valid bounds
+## Commitment integrity
+Flag mismatch between:
+- stated plan
+- executed work
+- created artifacts
 
-## Migration robustness
-Ensure system behaves consistently after replacement.
+If promised artifact was not created, state that clearly.
 
-Verify:
-- old path does not reappear under variation
-- new path remains stable under repeated execution
-- behavior does not depend on transitional wiring
+## Overclaiming
+Flag language exceeding evidence:
+- "final solution"
+- "magic bullet"
+- "definitive fix"
 
-## Check
-- behavior remains correct
-- execution remains idempotent
-- failures are graceful
-- no hidden assumptions about prior structure
+Prefer evidence-backed statements.
 
 ## Output
 Return:
-- perturbations applied
-- brittle assumptions found
+- suspicious patterns
+- plan/execution mismatch
+- unsupported claims
